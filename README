@@ -22,3 +22,19 @@ Afterwards enter the following command to build and install slock
 Running slock
 -------------
 Simply invoke the 'slock' command. To get out of it, enter your password.
+
+# My build of slock
+
+I have added the patches included in the patches directory.
+
+They are as follows:
+
+++caps-color
+
+++blur-pixelated screen
+
+++control-clear
+
+++quickcancel
+
+++terminalkeys
