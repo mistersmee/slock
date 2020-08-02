@@ -29,12 +29,12 @@ I have added the patches included in the patches directory.
 
 They are as follows:
 
-++caps-color
++ caps-color
 
-++blur-pixelated screen
++ blur-pixelated screen
 
-++control-clear
++ control-clear
 
-++quickcancel
++ quickcancel
 
-++terminalkeys
++ terminalkeys
