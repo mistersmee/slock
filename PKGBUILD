@@ -6,12 +6,12 @@ pkgver=0.8.2.r1062.2087ab9
 pkgrel=1
 epoch=1
 pkgdesc="My build of slock."
-url='https://github.com/darklord111/slock'
+url='https://github.com/mistersmee/slock'
 arch=(any)
 license=('MIT')
 depends=('git')
 makedepends=('make')
-source=('git://github.com/darklord111/slock')
+source=('git://github.com/mistersmee/slock')
 sha1sums=('SKIP')
 
 provides=("${_pkgname}")
