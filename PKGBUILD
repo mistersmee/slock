@@ -1,8 +1,8 @@
-# Maintainer:
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
 
 pkgname=slock-aseem
 _pkgname=slock
-pkgver=0.8.2.r1062.2087ab9
+pkgver=1.4.r132.6ef0354
 pkgrel=1
 epoch=1
 pkgdesc="My build of slock."
@@ -13,7 +13,6 @@ depends=('git')
 makedepends=('make')
 source=('git://github.com/mistersmee/slock')
 sha1sums=('SKIP')
-
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
