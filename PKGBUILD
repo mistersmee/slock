@@ -2,7 +2,7 @@
 
 pkgname=slock-aseem
 _pkgname=slock
-pkgver=1.4.r132.6ef0354
+pkgver=1.4.r145.f206965
 pkgrel=1
 epoch=1
 pkgdesc="My build of slock."
@@ -11,7 +11,7 @@ arch=(any)
 license=('MIT')
 depends=('imlib2' 'libxcrypt' 'libxrandr' 'libxext' 'libx11' 'xorgproto' 'pam' 'pambase')
 makedepends=('git')
-source=('git://github.com/mistersmee/slock')
+source=('git+https://github.com/mistersmee/slock')
 sha1sums=('SKIP')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
