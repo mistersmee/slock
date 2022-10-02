@@ -3,11 +3,11 @@ static const char *user  = "smee";
 static const char *group = "smee";
 
 static const char *colorname[NUMCOLS] = {
-	[INIT] =   "black",     /* after initialization */
-	[INPUT] =  "#005577",   /* during input */
-	[FAILED] = "#CC3333",   /* wrong password */
-	[CAPS] = "red",         /* CapsLock on */
-	[PAM] =    "#9400D3",   /* waiting for PAM */
+	[INIT] =   "black",	/* after initialization */
+	[INPUT] =  "#005577",	/* during input */
+	[FAILED] = "#CC3333",	/* wrong password */
+	[CAPS] = "red",		/* CapsLock on */
+	[PAM] =    "#9400D3",	/* waiting for PAM */
 };
 
 /* treat a cleared input like a wrong password (color) */

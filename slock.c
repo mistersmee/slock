@@ -215,7 +215,7 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 					ksym = XK_Return;
 					break;
 				case XK_h:
-                                       ksym = XK_BackSpace;
+				       ksym = XK_BackSpace;
 					break;
 				}
 			}
@@ -272,10 +272,10 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 			color = len ? (caps ? CAPS : INPUT) : (failure || failonclear ? FAILED : INIT);
 			if (running && oldc != color) {
 				for (screen = 0; screen < nscreens; screen++) {
-                    if(locks[screen]->bgmap)
-                        XSetWindowBackgroundPixmap(dpy, locks[screen]->win, locks[screen]->bgmap);
-                    else
-                        XSetWindowBackground(dpy, locks[screen]->win, locks[screen]->colors[0]);
+		    if(locks[screen]->bgmap)
+			XSetWindowBackgroundPixmap(dpy, locks[screen]->win, locks[screen]->bgmap);
+		    else
+			XSetWindowBackground(dpy, locks[screen]->win, locks[screen]->colors[0]);
 					XClearWindow(dpy, locks[screen]->win);
 				}
 				oldc = color;
@@ -287,10 +287,10 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 					if (rre->rotation == RR_Rotate_90 ||
 					    rre->rotation == RR_Rotate_270)
 						XResizeWindow(dpy, locks[screen]->win,
-						              rre->height, rre->width);
+							      rre->height, rre->width);
 					else
 						XResizeWindow(dpy, locks[screen]->win,
-						              rre->width, rre->height);
+							      rre->width, rre->height);
 					XClearWindow(dpy, locks[screen]->win);
 					break;
 				}
@@ -320,18 +320,18 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 
     if(image)
     {
-        lock->bgmap = XCreatePixmap(dpy, lock->root, DisplayWidth(dpy, lock->screen), DisplayHeight(dpy, lock->screen), DefaultDepth(dpy, lock->screen));
-        imlib_context_set_image(image);
-        imlib_context_set_display(dpy);
-        imlib_context_set_visual(DefaultVisual(dpy, lock->screen));
-        imlib_context_set_colormap(DefaultColormap(dpy, lock->screen));
-        imlib_context_set_drawable(lock->bgmap);
-        imlib_render_image_on_drawable(0, 0);
-        imlib_free_image();
+	lock->bgmap = XCreatePixmap(dpy, lock->root, DisplayWidth(dpy, lock->screen), DisplayHeight(dpy, lock->screen), DefaultDepth(dpy, lock->screen));
+	imlib_context_set_image(image);
+	imlib_context_set_display(dpy);
+	imlib_context_set_visual(DefaultVisual(dpy, lock->screen));
+	imlib_context_set_colormap(DefaultColormap(dpy, lock->screen));
+	imlib_context_set_drawable(lock->bgmap);
+	imlib_render_image_on_drawable(0, 0);
+	imlib_free_image();
     }
 	for (i = 0; i < NUMCOLS; i++) {
 		XAllocNamedColor(dpy, DefaultColormap(dpy, lock->screen),
-		                 colorname[i], &color, &dummy);
+				 colorname[i], &color, &dummy);
 		lock->colors[i] = color.pixel;
 	}
 
@@ -339,32 +339,32 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 	wa.override_redirect = 1;
 	wa.background_pixel = lock->colors[INIT];
 	lock->win = XCreateWindow(dpy, lock->root, 0, 0,
-	                          DisplayWidth(dpy, lock->screen),
-	                          DisplayHeight(dpy, lock->screen),
-	                          0, DefaultDepth(dpy, lock->screen),
-	                          CopyFromParent,
-	                          DefaultVisual(dpy, lock->screen),
-	                          CWOverrideRedirect | CWBackPixel, &wa);
+				  DisplayWidth(dpy, lock->screen),
+				  DisplayHeight(dpy, lock->screen),
+				  0, DefaultDepth(dpy, lock->screen),
+				  CopyFromParent,
+				  DefaultVisual(dpy, lock->screen),
+				  CWOverrideRedirect | CWBackPixel, &wa);
     if(lock->bgmap)
 		{
-        XSetWindowBackgroundPixmap(dpy, lock->win, lock->bgmap);
+	XSetWindowBackgroundPixmap(dpy, lock->win, lock->bgmap);
 		}
 	lock->pmap = XCreateBitmapFromData(dpy, lock->win, curs, 8, 8);
 	invisible = XCreatePixmapCursor(dpy, lock->pmap, lock->pmap,
-	                                &color, &color, 0, 0);
+					&color, &color, 0, 0);
 	XDefineCursor(dpy, lock->win, invisible);
 
 	/* Try to grab mouse pointer *and* keyboard for 600ms, else fail the lock */
 	for (i = 0, ptgrab = kbgrab = -1; i < 6; i++) {
 		if (ptgrab != GrabSuccess) {
 			ptgrab = XGrabPointer(dpy, lock->root, False,
-			                      ButtonPressMask | ButtonReleaseMask |
-			                      PointerMotionMask, GrabModeAsync,
-			                      GrabModeAsync, None, invisible, CurrentTime);
+					      ButtonPressMask | ButtonReleaseMask |
+					      PointerMotionMask, GrabModeAsync,
+					      GrabModeAsync, None, invisible, CurrentTime);
 		}
 		if (kbgrab != GrabSuccess) {
 			kbgrab = XGrabKeyboard(dpy, lock->root, True,
-			                       GrabModeAsync, GrabModeAsync, CurrentTime);
+					       GrabModeAsync, GrabModeAsync, CurrentTime);
 		}
 
 		/* input is grabbed: we can lock the screen */
@@ -389,10 +389,10 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 	/* we couldn't grab all input: fail out */
 	if (ptgrab != GrabSuccess)
 		fprintf(stderr, "slock: unable to grab mouse pointer for screen %d\n",
-		        screen);
+			screen);
 	if (kbgrab != GrabSuccess)
 		fprintf(stderr, "slock: unable to grab keyboard for screen %d\n",
-		        screen);
+			screen);
 	return NULL;
 }
 
